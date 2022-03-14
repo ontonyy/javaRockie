@@ -1,16 +1,9 @@
-package attempts;
+package hackerrank.attempts;
 
-import hackerrank.catAndMouse.Solution;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.stream.IntStream;
-
-import static java.util.stream.Collectors.toList;
+import java.io.File;
 
 public class Attempts {
     public static void main(String[] args) {
-
+        System.out.println(5 / 6);
     }
 }
