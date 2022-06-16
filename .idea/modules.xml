@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/algorithms/algorithms.iml" filepath="$PROJECT_DIR$/algorithms/algorithms.iml" />
       <module fileurl="file://$PROJECT_DIR$/design_patterns/design_patterns.iml" filepath="$PROJECT_DIR$/design_patterns/design_patterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hackerrank_tasks/hackerrank_tasks.iml" filepath="$PROJECT_DIR$/hackerrank_tasks/hackerrank_tasks.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ontonYava.iml" filepath="$PROJECT_DIR$/.idea/ontonYava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server_side/server_side.iml" filepath="$PROJECT_DIR$/server_side/server_side.iml" />
     </modules>
   </component>
 </project>
