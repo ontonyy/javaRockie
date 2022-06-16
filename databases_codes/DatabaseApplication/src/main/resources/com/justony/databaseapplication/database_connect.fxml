@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.justony.databaseapplication.scenes.ConnectScene">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="433.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="helpBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-radius: 5em; -fx-min-width: 25px; -fx-min-height: 25px; -fx-max-height: 25px; -fx-max-width: 25px;" text="?" textFill="#0022ff">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="database" layoutX="266.0" layoutY="48.0" prefHeight="28.0" prefWidth="101.0" promptText="Database" style="-fx-border-color: #0022ff;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label fx:id="wrongLabel" alignment="CENTER" layoutX="105.0" layoutY="18.0" prefHeight="18.0" prefWidth="211.0" textFill="RED">
+               <font>
+                  <Font name="Verdana Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="287.0" layoutY="90.0" mnemonicParsing="false" onAction="#openDb" text="Open" textFill="#0022ff">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="240.0" fitWidth="437.0" layoutY="159.0">
+               <image>
+                  <Image url="@images/dbs.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="nameDb" layoutX="46.0" layoutY="48.0" prefHeight="28.0" prefWidth="101.0" promptText="Name db" style="-fx-border-color: #ff7700;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Button layoutX="61.0" layoutY="90.0" mnemonicParsing="false" onAction="#createDb" text="Create" textFill="#ff7700">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="recoverBtn" layoutX="-2.0" layoutY="159.0" mnemonicParsing="false" onAction="#recoverAction" prefHeight="27.0" text="Recover" textFill="#10ba10">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="151.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="databases" layoutX="60.0" onMouseClicked="#handleMouseClick" prefHeight="400.0" prefWidth="165.0" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
