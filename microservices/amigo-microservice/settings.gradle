@@ -1,0 +1,6 @@
+rootProject.name = 'amigo-microservice'
+include 'fraud'
+include 'customer'
+include 'eureka-server'
+include 'eureka-server'
+
