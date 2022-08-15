@@ -9,11 +9,10 @@ public class SecurityProxyBank implements Bank {
 
     @Override
     public void setUserMoney(String user, double money) {
-        System.out.println("User is authorized?");
         if (user.equals("")) {
             System.out.println("User is not authorized!");
         } else {
-            System.out.println("All is good, money was set");
+            bank.setUserMoney(user, money);
         }
     }
 
@@ -22,7 +21,7 @@ public class SecurityProxyBank implements Bank {
         if (user.equals("")) {
             System.out.println("User is not authorized!");
         } else {
-            System.out.println("All is good, user have: user.money");
+            return bank.getUserMoney(user);
         }
         return 0;
     }

@@ -1,0 +1,24 @@
+{
+  "name": "Maxim",
+  "balance": 90,
+  "userBlockChain": {
+    "blocks": [
+      {
+        "hash": "0000"
+      },
+      {
+        "hash": "0339806990",
+        "prevHash": "0000",
+        "transaction": "Maxim \u003e 10$ \u003e Anton",
+        "type": "CONSUMPTION"
+      },
+      {
+        "hash": "01164485623",
+        "prevHash": "0339806990",
+        "transaction": "Anton \u003e 50$ \u003e Maxim",
+        "type": "INCOME"
+      }
+    ],
+    "genesisAdd": false
+  }
+}

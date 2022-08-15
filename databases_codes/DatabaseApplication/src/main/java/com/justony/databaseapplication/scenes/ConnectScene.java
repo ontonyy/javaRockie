@@ -2,9 +2,10 @@ package com.justony.databaseapplication.scenes;
 
 import com.justony.databaseapplication.Constants;
 import com.justony.databaseapplication.MainScene;
-import com.justony.databaseapplication.RecoverHandler;
+import com.justony.databaseapplication.recover.RecoverHandler;
 import com.justony.databaseapplication.SQLHandler;
 import com.justony.databaseapplication.exceptions.DatabaseExistException;
+import com.justony.databaseapplication.recover.RecoverType;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,13 +23,15 @@ public class ConnectScene {
     @FXML private Button recoverBtn;
     @FXML private ListView<String> databases;
 
+    private RecoverHandler recover;
+
     private HelpScene helpScene = new HelpScene("""
                 Here you can create new database
                 or open database by clicking on it
                 or by writing the name of database""");
 
     @FXML public void initialize() {
-        recoverBtn.setVisible(false);
+        recover = new RecoverHandler(recoverBtn, RecoverType.DATABASE);
         updateDatabases();
         helpBtn.hoverProperty().addListener(e -> helpScene.showStage());
     }
@@ -52,46 +55,38 @@ public class ConnectScene {
             ButtonType result = alert.showAndWait().get();
 
             if (result == buttonOpen) {
-                SQLHandler.dbName = db;
-                MainScene.changeScene("database_view.fxml");
+                openDatabaseScene(db);
             } else if (buttonDelete != null && result == buttonDelete) {
-                RecoverHandler.deleteName = db;
                 databases.getItems().remove(db);
-                startRecover();
+                try {
+                    recover.startRecover(db);
+                } catch (SQLException ex) {
+                    displayWrongLabel("Something wrong!");
+                }
             }
         }
     }
 
-    public void startRecover() {
-        recoverBtn.setVisible(true);
-        String text = "Recover " + RecoverHandler.deleteName;
-        recoverBtn.setText(text);
-        recoverBtn.setPrefWidth(text.length() * 11);
-        recoverBtn.setLayoutX(175 - (text.length() * 2.5));
-        RecoverHandler.pause.setOnFinished(event -> {
-            recoverBtn.setVisible(false);
-            try {
-                SQLHandler.getInstance().deleteDatabase(RecoverHandler.deleteName);
-            } catch (SQLException ex) {
-                displayWrongLabel("Something wrong!");
-            }
-            RecoverHandler.deleteName = "";
-        });
-        RecoverHandler.pause.play();
+    @FXML public void recoverAction() {
+        recover.act();
+        updateDatabases();
     }
 
-    @FXML public void recoverAction() {
-        RecoverHandler.pause.stop();
-        updateDatabases();
-        recoverBtn.setVisible(false);
+    public void openDatabaseScene(String db) {
+        try {
+            recover.checkRecover();
+            SQLHandler.dbName = db;
+            MainScene.changeScene("database_view.fxml");
+        } catch (SQLException ex) {
+            displayWrongLabel("Something wrong!");
+        }
     }
 
     @FXML public void openDb() {
         if (database.getText().isEmpty()) {
             wrongLabel.setText("Database not exist!");
         } else {
-            SQLHandler.dbName = database.getText();
-            MainScene.changeScene("database_view.fxml");
+            openDatabaseScene(database.getText());
         }
         database.setText("");
     }

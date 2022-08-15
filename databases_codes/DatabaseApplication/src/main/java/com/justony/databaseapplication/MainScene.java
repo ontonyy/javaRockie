@@ -2,25 +2,17 @@ package com.justony.databaseapplication;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
-import javafx.fxml.FXML;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class MainScene extends Application {
     private static Stage main;
+    private static Stage secondary;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -41,6 +33,30 @@ public class MainScene extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void setSecondaryNull() {
+        secondary = null;
+    }
+
+    public static void openScene(String fxml) {
+        if (secondary == null) {
+            try {
+                secondary = new Stage();
+                Parent root = FXMLLoader.load(MainScene.class.getResource(fxml));
+                secondary.setScene(new Scene(root, 700, 125));
+                secondary.show();
+                secondary.setOnCloseRequest(event -> {
+                    secondary = null;
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static Stage getSecondary() {
+        return secondary;
     }
 
     public static void main(String[] args) {

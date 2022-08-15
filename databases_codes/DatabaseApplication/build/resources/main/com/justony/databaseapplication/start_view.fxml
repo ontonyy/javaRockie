@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.justony.databaseapplication.scenes.StartScene">
+   <center>
+      <AnchorPane prefHeight="401.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="295.0" fitWidth="250.0" layoutY="106.0">
+               <image>
+                  <Image url="@images/db_app_justony.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="helpBtn" layoutX="113.0" layoutY="47.0" mnemonicParsing="false" style="-fx-background-radius: 5em; -fx-max-height: 25px; -fx-max-width: 25px; -fx-min-height: 25px; -fx-min-width: 25px;" text="?" textFill="#0022ff">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+   <right>
+      <AnchorPane prefHeight="405.0" prefWidth="318.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="345.0" layoutX="1.0" layoutY="2.0">
+               <image>
+                  <Image url="@images/boards/up.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="353.0" fitWidth="30.0" layoutX="318.0" layoutY="25.0">
+               <image>
+                  <Image url="@images/boards/side.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="344.0" layoutX="5.0" layoutY="377.0">
+               <image>
+                  <Image url="@images/boards/down.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="130.0" layoutY="233.0" mnemonicParsing="false" onAction="#startApp" style="-fx-background-color: #D6D5CB;" text="START" textFill="#0022ff">
+               <font>
+                  <Font name="Verdana Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="username" layoutX="99.0" layoutY="109.0" promptText="Username" style="-fx-border-color: #0022ff;" />
+            <TextField fx:id="password" layoutX="99.0" layoutY="160.0" promptText="Password" style="-fx-border-color: #0022ff;" />
+            <Label fx:id="wrongData" layoutX="99.0" layoutY="73.0" prefHeight="17.0" prefWidth="149.0" textFill="RED">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </right>
+</BorderPane>

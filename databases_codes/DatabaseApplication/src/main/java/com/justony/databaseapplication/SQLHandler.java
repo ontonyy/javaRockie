@@ -82,11 +82,11 @@ public class SQLHandler {
         return false;
     }
 
-    public void createTable(String tableName) throws SQLException {
+    public void createTable(String tableName, String query) throws SQLException {
         if (!isTableExist(tableName)) {
             PreparedStatement useDb = conn.prepareStatement("USE " + dbName);
             useDb.executeUpdate();
-            PreparedStatement databasesQuery = conn.prepareStatement("CREATE TABLE " + tableName);
+            PreparedStatement databasesQuery = conn.prepareStatement(query);
             databasesQuery.executeUpdate();
         }
     }
