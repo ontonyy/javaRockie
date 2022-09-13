@@ -38,6 +38,7 @@
                 </form:form>
             </div>
         </div>
+        <br><br><br>
         <mytags:footer/>
     </body>
 </html>

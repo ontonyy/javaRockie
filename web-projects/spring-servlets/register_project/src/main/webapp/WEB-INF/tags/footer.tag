@@ -6,8 +6,8 @@
         .site-footer {
             background-color: #af84ff;
             text-align: center;
-            margin: 0px 0;
-            padding: 10px 0;
+            margin: 0 0;
+            padding: 5px 0;
             bottom : 2px;
             vertical-align: bottom;
             position:fixed;

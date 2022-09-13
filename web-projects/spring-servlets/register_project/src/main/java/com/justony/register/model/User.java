@@ -46,6 +46,10 @@ public class User {
     @NonNull @Column(name = "married")
     private boolean married;
 
+    private String year;
+    private String month;
+    private String day;
+
     public boolean checkPasswordCorrect(String password) {
         if (this.password.equals(password)) {
             return true;
@@ -57,13 +61,19 @@ public class User {
     public static User buildByRequest(RegisterRequest request) {
         User user = new User();
 
+        String birthday = request.getBirthday();
+
         user.setUsername(user.checkAndReturnUsername(request.getUsername()));
         user.setEmail(user.checkAndReturnEmail(request.getEmail()));
         user.setPassword(user.checkAndReturnPassword(request.getPassword()));
         user.setProfession(user.checkProfession(request.getProfession()));
-        user.setBirthday(user.checkAndReturnBirthday(request.getBirthday()));
+        user.setBirthday(user.checkAndReturnBirthday(birthday));
         user.setMarried(request.isMarried());
         user.setNote(request.getNote());
+
+        user.setYear(birthday.split("-")[0]);
+        user.setMonth(birthday.split("-")[1]);
+        user.setDay(birthday.split("-")[2]);
 
         return user;
     }

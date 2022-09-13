@@ -1,9 +1,9 @@
 package com.justony.register.controller;
 
-import com.justony.register.model.Profession;
 import com.justony.register.model.User;
 import com.justony.register.model.request.LoginRequest;
 import com.justony.register.model.request.RegisterRequest;
+import com.justony.register.model.request.SortRequest;
 import com.justony.register.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,25 +25,24 @@ public class UserController {
     }
 
     @RequestMapping("/users")
-    public String getAllUsers(@ModelAttribute("profession") Profession profession,
+    public String getAllUsers(@ModelAttribute("profession") SortRequest request,
             Map<String, Object> model) {
-        List<User> users = service.getAllUsers();
-        List<String> professions = service.getProfessionList();
-        String defaultProfession = "All";
-        professions.set(0, defaultProfession);
 
-        if (profession.getName() != null) {
-            if (!profession.getName().equals("All")) {
-                users = service.getUsersByProfession(profession.getName());
-                defaultProfession = profession.getName();
-            }
-        }
+        List<User> users = service.sortUsersByRequest(request);
+
+        List<String> professions = service.getProfessionList();
+        professions.set(0, "All");
+
+        String defaultProfession = service.getDefaultProfession(request.getProfessionName());
         professions.remove(defaultProfession);
 
         model.put("users", users);
-        model.put("profession", new Profession());
+        model.put("sortRequest", new SortRequest());
         model.put("defaultProfession", defaultProfession);
         model.put("professionList", professions);
+        model.put("monthList", service.getMonthList());
+        model.put("dayList", service.getDayList());
+
         return "users_table";
     }
 
