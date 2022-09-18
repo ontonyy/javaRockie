@@ -6,6 +6,7 @@
     <body>
         <h1>Welcome!</h1>
 
-        <p>Click <a href="/main">here</a> to see a greeting.</p>
+        <h3>Admins main: <a href="/admin/main">page</a></h3>
+        <h3>User main: <a href="/user/main">page</a></h3>
     </body>
 </html>
